@@ -97,10 +97,11 @@ class ComicController extends Controller
             $data = $request->all();
             $comic->update($data);
             $comic->save();
-            return redirect()->route('comics.show', ['comic' => $comic])->with('status', 'Comic updated!');
+            return redirect()->route('comics.show', compact('comic'))->with('status', 'Comic updated!');
         }
 
         abort(404);
+
     }
 
     /**

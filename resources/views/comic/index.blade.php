@@ -29,10 +29,10 @@
                         <td>{{$comic->series}}</td>
                         <td>{{$comic->sale_date}}</td>
                         <td>{{$comic->type}}</td>
-                        <td><a class="btn btn-primary" href="{{route('comics.show', $comic->id)}}">Show</a></td>
-                        <td><a class="btn btn-warning" href="{{route('comics.edit', $comic->id)}}">Edit</a></td>
+                        <td><a class="btn btn-primary" href="{{route('comics.show', $comic)}}">Show</a></td>
+                        <td><a class="btn btn-warning" href="{{route('comics.edit', $comic)}}">Edit</a></td>
                         <td>
-                            <form action="{{route('comics.destroy', ['comic' => $comic->id])}}" method="POST">
+                            <form action="{{route('comics.destroy', $comic)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 {{-- <button class="btn btn-danger" type="submit" value="delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button> --}}
