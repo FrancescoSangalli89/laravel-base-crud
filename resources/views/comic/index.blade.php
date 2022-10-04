@@ -29,8 +29,8 @@
                         <td>{{$comic->series}}</td>
                         <td>{{$comic->sale_date}}</td>
                         <td>{{$comic->type}}</td>
-                        <td><a class="btn btn-primary" href="{{route('comics.show', ['comic' => $comic])}}">Show</a></td>
-                        <td><a class="btn btn-warning" href="{{route('comics.edit', ['comic' => $comic])}}">Edit</a></td>
+                        <td><a class="btn btn-primary" href="{{route('comics.show', $comic->id)}}">Show</a></td>
+                        <td><a class="btn btn-warning" href="{{route('comics.edit', $comic->id)}}">Edit</a></td>
                         <td>
                             <form action="{{route('comics.destroy', ['comic' => $comic->id])}}" method="POST">
                                 @csrf
