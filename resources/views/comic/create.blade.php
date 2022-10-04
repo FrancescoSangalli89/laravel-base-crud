@@ -38,7 +38,7 @@
                     <option>Graphic Novel</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-warning">create new comic</button>
+            <button type="submit" class="btn btn-primary">create new comic</button>
         </form>
     </div>
 @endsection
