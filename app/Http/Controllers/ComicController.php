@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 use function GuzzleHttp\Promise\all;
 
@@ -38,6 +39,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title' => 'required|max:255|min:5',
+                'description' => 'nullable|max:65000',
+                'thumb' => 'required|max:255|url',
+                'price' => 'required|numeric|min:0',
+                'series' => 'required|max:80|min:5',
+                'sale_date' => 'required|date',
+                'type' => ['required', Rule::in(['Comic Book', 'Graphic Novel'])],
+            ]
+        );
+
         $data = $request->all();
 
         $newComic = new Comic();
@@ -91,7 +104,18 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Comic $comic)
-    {
+    {   
+        $request->validate(
+            [
+                'title' => 'required|max:255|min:10',
+                'description' => 'nullable|max:65000',
+                'thumb' => 'required|max:255|url',
+                'price' => 'required|numeric|min:0',
+                'series' => 'required|max:80|min:10',
+                'sale_date' => 'required|date',
+                'type' => ['required', Rule::in(['Comic Book', 'Graphic Novel'])],
+            ]
+        );
 
         if ($comic) {
             $data = $request->all();
